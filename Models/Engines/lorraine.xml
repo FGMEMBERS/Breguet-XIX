@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <path>lorraine.ac</path>
+
+  <animation>
+    <object-name>moteur1</object-name>
+    <object-name>moteur2</object-name>
+    <object-name>moteur3</object-name>
+    <object-name>echappes</object-name>
+    <object-name>structure</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>moteur1</object-name>
+    <object-name>moteur2</object-name>
+    <object-name>moteur3</object-name>
+    <condition>
+      <not>
+        <equals>
+          <property>instrumentation/doors/crew/position-norm</property>
+          <value> 0 </value>
+        </equals>
+      </not>
+    </condition>
+  </animation>
+
+</PropertyList>

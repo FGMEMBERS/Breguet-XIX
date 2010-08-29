@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim include="Nasal/views.xml">
+
+    <author>Emmanuel BARANGER (3D/FDM)</author>
+    <aircraft-version>0.1</aircraft-version>
+    <status>Alpha</status>
+
+    <fuel-fraction>0.8</fuel-fraction>
+
+    <startup>
+     <splash-texture>Aircraft/Breguet-XIX/breguet19-splash.png</splash-texture>
+    </startup>
+
+    <sound>
+     <path>Aircraft/Breguet-XIX/Sounds/breguet19-sound.xml</path>
+    </sound>
+
+    <model>
+     <path archive="y">Aircraft/Breguet-XIX/Models/breguet19.xml</path>
+      <livery>
+        <file type="string">default</file>
+      </livery>
+    </model>
+
+    <multiplay>
+      <chat_display>1</chat_display>
+      <generic>
+        <int type="int" n="0">0</int>
+        <int type="int" n="1">0</int>
+        <int type="int" n="2">0</int>
+        <int type="int" n="3">0</int>
+        <int type="int" n="4">0</int>
+        <int type="int" n="5">0</int>
+      </generic>
+    </multiplay>
+
+    <help>
+      <title>Lockheed breguet19</title>
+      <key>
+        <name>d</name>
+        <desc>Open/Close door</desc>
+      </key>
+    </help>
+
+    <menubar include="Dialogs/breguet19-menu.xml"/>
+
+  </sim>
+
+  <yasim>
+    <ryansosl>
+      <pilot-lb>180</pilot-lb>
+    </ryansosl>
+  </yasim>
+
+  <engines>
+    <engine>
+      <rpm type="double">700</rpm>
+    </engine>
+  </engines>
+
+  <input>
+    <keyboard include="Nasal/breguet19-keyboard.xml"/>
+  </input>
+
+  <nasal>
+    <doors>
+      <file>Aircraft/Breguet-XIX/Nasal/doors.nas</file>
+    </doors>
+    <breguet19>
+      <file>Aircraft/Breguet-XIX/Nasal/liveries.nas</file>
+    </breguet19>
+  </nasal>
+
+</PropertyList>
+

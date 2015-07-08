@@ -1,18 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
-
+  
   <path>breguet19.ac</path>
-
+  
   <nasal>
     <load>
       var livery_update = aircraft.livery_update.new("Aircraft/Breguet-XIX/Models/Liveries", 10);
+      
+      var self = cmdarg();
+      
+      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+      
+      var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
+      var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
+      
+      crew_door.alias(float_0);
+      passenger_door.alias(float_1);
     </load>
+    
     <unload>
       livery_update.stop();
+      crew_door.unalias();
+      passenger_door.unalias();
     </unload>
   </nasal>
-
+  
   <animation>
     <!-- Objets opaques -->
     <object-name>fuselage</object-name>
@@ -22,121 +36,103 @@
     <object-name>aileronG</object-name>
     <object-name>aileronD</object-name>
     <object-name>ailesB</object-name>
-    <object-name>roueG</object-name>
-    <object-name>roueD</object-name>
-    <object-name>radiateur</object-name>
-    <object-name>axes</object-name>
     <object-name>dessus</object-name>
     <object-name>ailes2</object-name>
     <object-name>profondeur</object-name>
     <object-name>direction</object-name>
-    <object-name>pouet</object-name>
     <object-name>caches</object-name>
+    
+    <object-name>trous</object-name>
+    <object-name>trouscaches</object-name>
+    <object-name>roueG</object-name>
+    <object-name>roueD</object-name>
+    <object-name>radiateur</object-name>
+    <object-name>axes</object-name>
+    <object-name>pouet</object-name>
     <object-name>attaches</object-name>
     <object-name>bol</object-name>
     <object-name>helice</object-name>
     <object-name>pattes</object-name>
-    <object-name>trous</object-name>
-
+    <object-name>cables</object-name>
+    <object-name>cablesG</object-name>
+    <object-name>cablesD</object-name>
+    
     <!-- Objets transparents -->
     <object-name>vitres</object-name>
-    <object-name>cables</object-name>
     <object-name>propdisc</object-name>
     <object-name>propblur</object-name>
   </animation>
-
+  
   <animation>
     <type>material</type>
     <object-name>fuselage</object-name>
-    <object-name>capot</object-name>
+    <object-name>capotG</object-name>
+    <object-name>capotD</object-name>
     <object-name>ailesH</object-name>
     <object-name>aileronG</object-name>
     <object-name>aileronD</object-name>
     <object-name>ailesB</object-name>
-    <object-name>roueG</object-name>
-    <object-name>roueD</object-name>
-    <object-name>radiateur</object-name>
-    <object-name>axes</object-name>
     <object-name>dessus</object-name>
     <object-name>ailes2</object-name>
     <object-name>profondeur</object-name>
     <object-name>direction</object-name>
-    <object-name>pouet</object-name>
     <object-name>caches</object-name>
+    
+    <object-name>trous</object-name>
+    <object-name>trouscaches</object-name>
+    <object-name>roueG</object-name>
+    <object-name>roueD</object-name>
+    <object-name>radiateur</object-name>
+    <object-name>axes</object-name>
+    <object-name>pouet</object-name>
     <object-name>attaches</object-name>
     <object-name>bol</object-name>
     <object-name>helice</object-name>
     <object-name>pattes</object-name>
-    <object-name>trous</object-name>
-
+    <object-name>cables</object-name>
+    <object-name>cablesG</object-name>
+    <object-name>cablesD</object-name>
+    
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture.png</texture>
-<!--
-    <diffuse>
-      <red-prop>diffuse/red</red-prop>
-      <green-prop>diffuse/green</green-prop>
-      <blue-prop>diffuse/blue</blue-prop>
-    </diffuse>
-
-    <ambient>
-      <red-prop>ambient/red</red-prop>
-      <green-prop>ambient/green</green-prop>
-      <blue-prop>ambient/blue</blue-prop>
-    </ambient>
--->
     <specular>
       <red-prop>specular/red</red-prop>
       <green-prop>specular/green</green-prop>
       <blue-prop>specular/blue</blue-prop>
     </specular>
-
-    <emission>
-      <red-prop>emission/red</red-prop>
-      <green-prop>emission/green</green-prop>
-      <blue-prop>emission/blue</blue-prop>
-    </emission>
-<!--
-    <shininess>
-      <shininess-prop>shininess</shininess-prop>
-    </shininess>
--->
   </animation>
-
+  
   <effect>
     <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
     <object-name>fuselage</object-name>
-    <object-name>capot</object-name>
+    <object-name>capotG</object-name>
+    <object-name>capotD</object-name>
     <object-name>ailesH</object-name>
     <object-name>aileronG</object-name>
     <object-name>aileronD</object-name>
     <object-name>ailesB</object-name>
-    <object-name>radiateur</object-name>
-    <object-name>axes</object-name>
     <object-name>dessus</object-name>
     <object-name>ailes2</object-name>
     <object-name>profondeur</object-name>
     <object-name>direction</object-name>
-    <object-name>pouet</object-name>
-    <object-name>caches</object-name>
-    <object-name>bol</object-name>
+    <object-name>caches</object-name>=   
   </effect>
-
-  <animation>
-    <type>noshadow</type>
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Breguet-XIX/Models/Effects/Glass/glass</inherits-from>
+    <object-name>vitres</object-name>
+  </effect>
+  
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>vitres</object-name>
     <object-name>cables</object-name>
     <object-name>propdisc</object-name>
     <object-name>propblur</object-name>
-  </animation>
-
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
-    <object-name>vitres</object-name>
-  </animation>
-
+  </effect>
+  
   <!-- Moteur -->
   <model>
     <path>Aircraft/Breguet-XIX/Models/Engines/lorraine.xml</path>
@@ -146,17 +142,106 @@
       <z-m>  0.165 </z-m>
     </offsets>
   </model>
-
+  
   <!-- Interieur -->
   <model>
     <path>Aircraft/Breguet-XIX/Models/Interior/interior.xml</path>
+  </model>
+  
+  <!-- Cranking effects -->
+  <!-- Left -->
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/Effects/cranking/cranking.xml</path>
     <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
+      <x-m> -4.30558 </x-m>
+      <y-m> -0.18437 </y-m>
+      <z-m> -0.19533 </z-m>
+      <pitch-deg> 90 </pitch-deg>
     </offsets>
   </model>
-
+  
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -4.01840 </x-m>
+      <y-m> -0.12649 </y-m>
+      <z-m> -0.34838 </z-m>
+      <pitch-deg> 90 </pitch-deg>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.91029 </x-m>
+      <y-m> -0.12829 </y-m>
+      <z-m> -0.41107 </z-m>
+      <pitch-deg> 90 </pitch-deg>
+    </offsets>
+  </model>
+  
+  <!-- Right -->
+  <model>
+    <path>Aircraft/Breguet-XIX//Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -4.30558 </x-m>
+      <y-m>  0.18437 </y-m>
+      <z-m> -0.19533 </z-m>
+      <pitch-deg> 90 </pitch-deg>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -4.01840 </x-m>
+      <y-m>  0.12649 </y-m>
+      <z-m> -0.34838 </z-m>
+      <pitch-deg> 90 </pitch-deg>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -3.91029 </x-m>
+      <y-m>  0.12829 </y-m>
+      <z-m> -0.41107 </z-m>
+      <pitch-deg> 90 </pitch-deg>
+    </offsets>
+  </model>
+  
+  <!-- Effets sur le sol -->
+  <!-- Roue gauche -->
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/Effects/ground/ground0.xml</path>   
+    <offsets>
+      <x-m> -2.722 </x-m>
+      <y-m> -1.040 </y-m>
+      <z-m> -1.825 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- Roue droite -->
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/Effects/ground/ground1.xml</path>
+    <offsets>
+      <x-m> -2.722 </x-m>
+      <y-m>  1.040 </y-m>
+      <z-m> -1.825 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- Pate de queue -->
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/Effects/ground/ground2.xml</path>
+    <offsets>
+      <x-m>  4.266 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -0.557 </z-m>
+    </offsets>
+  </model>
+  
   <animation>
     <name>HeliceComplete</name>
     <object-name>propdisc</object-name>
@@ -164,7 +249,7 @@
     <object-name>helice</object-name>
     <object-name>bol</object-name>
   </animation>
-
+  
   <!-- L'hélice --> 
   <!-- Séléction de l'objet visible en fonction des rpm -->
   <animation>
@@ -177,39 +262,45 @@
       </greater-than>
     </condition>
   </animation>
-
+  
   <animation>
     <type>select</type>
     <object-name>propblur</object-name>
     <condition>
-    <and>
-      <greater-than>
-        <property>engines/engine[0]/rpm</property>
-        <value>300.000</value>
-      </greater-than>
-      <less-than>
-        <property>engines/engine[0]/rpm</property>
-        <value>900.001</value>
-      </less-than>
-    </and>
+      <and>
+        <greater-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>300.000</value>
+        </greater-than>
+        <less-than>
+          <property>engines/engine[0]/rpm</property>
+          <value>900.001</value>
+        </less-than>
+      </and>
     </condition>
   </animation>
-
+  
   <animation>
     <type>select</type>
     <object-name>helice</object-name>
     <condition>
       <less-than>
         <property>engines/engine[0]/rpm</property>
-	<value>900</value>
+        <value>900</value>
       </less-than>
     </condition>
   </animation>
-
+  
   <animation>
     <type>spin</type>
     <object-name>HeliceComplete</object-name>
     <property>engines/engine[0]/rpm</property>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value> 5 </value>
+      </greater-than>
+    </condition>
     <factor> 1 </factor>
     <center>
       <x-m> -4.611 </x-m>
@@ -222,38 +313,70 @@
       <z>  0 </z>
     </axis>
   </animation>
-
+  
   <!-- Animations des ailerons -->
   <animation>
     <type>rotate</type>
     <object-name>aileronG</object-name>
+    <object-name>cablesG</object-name>
     <property>surface-positions/left-aileron-pos-norm</property>
     <factor> 15 </factor>
     <axis>
-      <x1-m> -1.195 </x1-m>
-      <y1-m> -5.482 </y1-m>
-      <z1-m>  1.435 </z1-m>
-      <x2-m> -1.253 </x2-m>
-      <y2-m> -2.603 </y2-m>
-      <z2-m>  1.439 </z2-m>
+      <x1-m> -1.19463 </x1-m>
+      <y1-m> -5.48193 </y1-m>
+      <z1-m>  1.43545 </z1-m>
+      <x2-m> -1.25311 </x2-m>
+      <y2-m> -2.60340 </y2-m>
+      <z2-m>  1.43940 </z2-m>
     </axis>
   </animation>
-
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>cablesG</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m> -1.23747 </x1-m>
+      <y1-m> -3.12701 </y1-m>
+      <z1-m>  1.56063 </z1-m>
+      <x2-m> -1.17769 </x2-m>
+      <y2-m> -5.71714 </y2-m>
+      <z2-m>  1.56063 </z2-m>
+    </axis>
+  </animation>
+  
   <animation>
     <type>rotate</type>
     <object-name>aileronD</object-name>
+    <object-name>cablesD</object-name>
     <property>surface-positions/right-aileron-pos-norm</property>
     <factor> 15 </factor>
     <axis>
-      <x1-m> -1.253 </x1-m>
-      <y1-m>  2.603 </y1-m>
-      <z1-m>  1.439 </z1-m>
-      <x2-m> -1.195 </x2-m>
-      <y2-m>  5.482 </y2-m>
-      <z2-m>  1.435 </z2-m>
+      <x1-m> -1.25311 </x1-m>
+      <y1-m>  2.60340 </y1-m>
+      <z1-m>  1.43940 </z1-m>
+      <x2-m> -1.19463 </x2-m>
+      <y2-m>  5.48193 </y2-m>
+      <z2-m>  1.43545 </z2-m>
     </axis>
   </animation>
-
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>cablesD</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> 15 </factor>
+    <axis>
+      <x1-m> -1.23747 </x1-m>
+      <y1-m>  3.12701 </y1-m>
+      <z1-m>  1.56063 </z1-m>
+      <x2-m> -1.17769 </x2-m>
+      <y2-m>  5.71714 </y2-m>
+      <z2-m>  1.56063 </z2-m>
+    </axis>
+  </animation>
+  
   <!-- Gouverne de profondeur -->
   <animation>
     <type>rotate</type>
@@ -271,7 +394,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <!-- Gouverne de direction -->
   <animation>
     <type>rotate</type>
@@ -289,7 +412,7 @@
       <z> 1 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>spin</type>
     <object-name>roueG</object-name>
@@ -306,7 +429,7 @@
       <z>  0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>spin</type>
     <object-name>roueD</object-name>
@@ -323,13 +446,13 @@
       <z>  0 </z>
     </axis>
   </animation>
-
+  
   <!-- Capot -->
   <!-- Gauche -->
   <animation>
     <type>translate</type>
     <object-name>capotG</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.00 </ind><dep>  0.0 </dep></entry>
       <entry><ind> 0.02 </ind><dep>  0.0 </dep></entry>
@@ -341,11 +464,11 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>translate</type>
     <object-name>capotG</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.00 </ind><dep>  0.0 </dep></entry>
       <entry><ind> 0.02 </ind><dep> -1.5 </dep></entry>
@@ -357,11 +480,11 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>translate</type>
     <object-name>capotG</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.00 </ind><dep>  0.0 </dep></entry>
       <entry><ind> 0.02 </ind><dep>  0.0 </dep></entry>
@@ -373,11 +496,11 @@
       <z> 1 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>capotG</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.00 </ind><dep>   0 </dep></entry>
       <entry><ind> 0.04 </ind><dep>   0 </dep></entry>
@@ -389,11 +512,11 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>capotG</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.0 </ind><dep>   0 </dep></entry>
       <entry><ind> 0.5 </ind><dep>   0 </dep></entry>
@@ -405,12 +528,12 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <!-- Droit -->
   <animation>
     <type>translate</type>
     <object-name>capotD</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.00 </ind><dep>  0.0 </dep></entry>
       <entry><ind> 0.02 </ind><dep>  0.0 </dep></entry>
@@ -422,11 +545,11 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>translate</type>
     <object-name>capotD</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.00 </ind><dep> 0.0 </dep></entry>
       <entry><ind> 0.02 </ind><dep> 1.5 </dep></entry>
@@ -438,11 +561,11 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>translate</type>
     <object-name>capotD</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.00 </ind><dep>  0.0 </dep></entry>
       <entry><ind> 0.02 </ind><dep>  0.0 </dep></entry>
@@ -454,11 +577,11 @@
       <z> 1 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>capotD</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.00 </ind><dep>   0 </dep></entry>
       <entry><ind> 0.04 </ind><dep>   0 </dep></entry>
@@ -470,11 +593,11 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>capotD</object-name>
-    <property>instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0.0 </ind><dep>  0 </dep></entry>
       <entry><ind> 0.5 </ind><dep>  0 </dep></entry>
@@ -486,6 +609,62 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
+  <!-- Séléction du type de cache des roues -->
+  <animation>
+    <type>select</type>
+    <object-name>caches</object-name>
+    <object-name>trouscaches</object-name>
+    <condition>
+      <!-- /sim/model/hide-typea -->
+      <not><property>sim/multiplay/generic/int[6]</property></not>
+    </condition>
+  </animation>
+  
+  <!-- Effets lumineux -->
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/light/beacon.xml</path>
+    <offsets>
+      <x-m> 3.81224 </x-m>
+      <y-m> 0.00000 </y-m>
+      <z-m> 1.81650 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/light/RedLight.xml</path>
+    <offsets>
+      <x-m> -2.04205 </x-m>
+      <y-m> -7.41183 </y-m>
+      <z-m>  1.54650 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/light/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -2.03820 </x-m>
+      <y-m> -7.41183 </y-m>
+      <z-m>  1.54650 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/light/GreenLight.xml</path>
+    <offsets>
+      <x-m> -2.04205 </x-m>
+      <y-m>  7.41183 </y-m>
+      <z-m>  1.54650 </z-m>
+    </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/Breguet-XIX/Models/light/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -2.03820 </x-m>
+      <y-m>  7.41183 </y-m>
+      <z-m>  1.54650 </z-m>
+    </offsets>
+  </model>
+  
 </PropertyList>
-

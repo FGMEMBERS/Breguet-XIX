@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
 
-  <sim include="Nasal/views.xml">
+  <sim include="Systems/views.xml">
 
+    <description>Breguet XIX "Point d'Interrogation" (YASim)</description>
     <author>Emmanuel BARANGER (3D/FDM)</author>
     <aircraft-version>0.1</aircraft-version>
     <status>Alpha</status>
-
+    
     <fuel-fraction>0.8</fuel-fraction>
 
     <startup>
@@ -23,47 +24,56 @@
       <livery>
         <file type="string">default</file>
       </livery>
+      <hide-typea>false</hide-typea>
     </model>
 
     <multiplay>
       <chat_display>1</chat_display>
-      <generic>
-        <int type="int" n="0">0</int>
-        <int type="int" n="1">0</int>
-        <int type="int" n="2">0</int>
-        <int type="int" n="3">0</int>
-        <int type="int" n="4">0</int>
-        <int type="int" n="5">0</int>
+      <generic> 
+        <int   n="0"  type="int">  0 </int>                                         <!--  0 immat -->
+        <int   n="1"  type="int">  0 </int>                                         <!--  1 immat -->
+        <int   n="2"  type="int">  0 </int>                                         <!--  2 immat -->
+        <int   n="3"  type="int">  0 </int>                                         <!--  3 immat -->
+        <int   n="4"  type="int">  0 </int>                                         <!--  4 immat -->
+        <int   n="5"  type="int">  0 </int>                                         <!--  5 immat -->
+        <int   n="6"  type="bool" alias="/sim/model/hide-typea">false</int>         <!--  6 type of wheels -->
+        <int   n="7"  type="int"  alias="smoke/particlepersec">50</int>             <!--  7 particlepersec -->
+        <int   n="8"  alias="/systems/electrical/outputs/nav-lights">0</int>        <!--  8 nav-lights -->
+        <int   n="9"  alias="/sim/model/lights/beacon/state">false</int>            <!--  9 strobe-lights -->
+        <int   n="11" type="int"  alias="/smoke/colors/knob-left">1</int>           <!-- 10 smoke mixer green setting -->
+        <int   n="12" type="int"  alias="/smoke/colors/knob-center">2</int>         <!-- 11 smoke mixer White setting -->
+        <int   n="13" type="int"  alias="/smoke/colors/knob-right">3</int>          <!-- 12 smoke mixer red setting -->
+        <int   n="14" type="bool" alias="/smoke/activeL">false</int>                <!-- 13 start smoke Left -->
+        <int   n="15" type="bool" alias="/smoke/activeC">false</int>                <!-- 13 start smoke Center -->
+        <int   n="16" type="bool" alias="/smoke/activeR">false</int>                <!-- 13 start smoke Right -->
+        <float n="0"  alias="/sim/model/door-positions/crew/position-norm"/>
+        <float n="1"  alias="/sim/model/door-positions/passenger/position-norm"/>
+        <float n="2"  alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
+        <float n="3"  alias="/position/altitude-ft"> 0 </float>                     <!-- altitude for Smoke/Trail -->
+        <float n="4"  alias="/engines/engine[0]/rpm"/>
+        <float n="5"  alias="/engines/engine[0]/cranking"/>
+        <float n="6"  alias="/gear/gear[0]/wow/"/>
+        <float n="7"  alias="/gear/gear[1]/wow/"/>
+        <float n="8"  alias="/gear/gear[2]/wow/"/>
+        <float n="9"  alias="/gear/gear[0]/rollspeed-ms"/>
+        <float n="10" alias="/gear/gear[1]/rollspeed-ms"/>
+        <float n="11" alias="/gear/gear[2]/rollspeed-ms"/>
+        <!-- For Bombable -->
+        <int type="int" n="10" alias="controls/armament/trigger">0</int>
+        <string n="0" type="string" alias="/sim/model/numbers"/>                    <!-- Numbers -->
+        <string n="9" type="string" />
       </generic>
     </multiplay>
-
-    <help>
-      <title>Lockheed breguet19</title>
-      <key>
-        <name>d</name>
-        <desc>Open/Close door</desc>
-      </key>
-    </help>
+    
+    <help include="Systems/help.xml"/>
 
     <menubar include="Dialogs/breguet19-menu.xml"/>
 
   </sim>
 
-  <yasim>
-    <ryansosl>
-      <pilot-lb>180</pilot-lb>
-    </ryansosl>
-  </yasim>
-
-  <engines>
-    <engine>
-      <rpm type="double">700</rpm>
-    </engine>
-  </engines>
-
-  <input>
-    <keyboard include="Nasal/breguet19-keyboard.xml"/>
-  </input>
+  <input include="Systems/breguet19-keyboard.xml"/>
+  
+  <engines include="Systems/engines.xml"/>
 
   <nasal>
     <doors>
@@ -71,8 +81,8 @@
     </doors>
     <breguet19>
       <file>Aircraft/Breguet-XIX/Nasal/liveries.nas</file>
+      <file>Aircraft/Breguet-XIX/Nasal/light.nas</file>
     </breguet19>
   </nasal>
 
 </PropertyList>
-
